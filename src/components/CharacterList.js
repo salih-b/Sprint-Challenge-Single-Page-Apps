@@ -2,6 +2,25 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import SearchForm from './SearchForm';
+import styled from "styled-components";
+
+const CharacterStyle = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+`;
+const CharacterCardStyle = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+color: wheat;
+padding: 1%;
+border: 1px wheat solid;
+margin: 2%;
+`;
+const CharacterCardListStyle = styled.div`
+background:black;
+`;
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -32,13 +51,13 @@ export default function CharacterList() {
     setQuery(event.target.value);
   };
   return (  
-    <div className="character-list">
+    <CharacterStyle className="characters">
 <SearchForm query={query} handleInputChange={handleInputChange} />
-      <div className="character-list">
+      <CharacterCardListStyle className="characters-list">
         {data.map(data => {
           
           return (
-            <div className="character-list" key={data._id}>
+            <CharacterCardStyle className="character-card" key={data._id}>
                 <span aria-label="RM-character" role="img">
                   <img src={data.image}/>
                 </span>
@@ -51,11 +70,11 @@ export default function CharacterList() {
               
               <h3 className="capital">Origin: {data.origin.name}</h3>
               <h3 className="capital">Current Location: {data.location.name}</h3>
-            </div>
+            </CharacterCardStyle>
           );
         })}
-      </div>
-    </div>
+      </CharacterCardListStyle>
+    </CharacterStyle>
   );
 
 

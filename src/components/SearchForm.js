@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
+import styled from "styled-components";
+
+const SearchFormStyles = styled.section`
+border: 5px #dbd7d7 solid;
+width: fit-content;
+border-radius: 15px;
+margin-bottom: 1%
+padding: .5%;
+`;
+
 
 export default function SearchForm({query, handleInputChange}) {
  
   return (
-    <section className="search-form">
+    <SearchFormStyles className="search-form">
            <form className="search">
         <input
           type="text"
@@ -16,6 +26,6 @@ export default function SearchForm({query, handleInputChange}) {
           autoComplete="off"
         />
       </form>
-    </section>
+    </SearchFormStyles>
   );
 }
